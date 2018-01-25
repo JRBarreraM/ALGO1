@@ -6,7 +6,7 @@
 	Autor: 
 		Br. Jose Barrera
 
-	Ultima modificacion: 23/01/2018
+	Ultima modificacion: 25/01/2018
 
 	VARIABLES:
 	m: int // ENTRADA: 1er Numero.
@@ -16,8 +16,8 @@
 """
 
 # Valores iniciales:
-m = int(input("m = "))
-n = int(input("n = "))
+m = int(input("ingrese el primer numero = "))
+n = int(input("ingrese el segundo numero = "))
 
 # Precondicion: 
 assert(True)
@@ -35,9 +35,9 @@ else:
 	o = m
 
 # Postcondicion: 
-assert(((m == 10) == (o == m/n)) or ((m == 5) == (m*n == o)) \
-	or ((m == 3) == (m+n == o)) or ((m == 2) == (m**n == o)) \
-	((m != 2 != 3 != 5 != 10) == (m == o)))
+assert(((m != 10) or (o == m/n)) and ((m != 5) or (m*n == o)) \
+	or ((m != 3) or (m+n == o)) and ((m == 2) != (m**n == o)) and \
+	((m == 2 ==  3 == 5 == 10) or (m == o)))
 
 # Salida:
-print(o)
+print("El resultado es", o)
