@@ -1,0 +1,41 @@
+/* Prelab2ejercicio2.py
+
+	DESCRIPCION: Programa que calcula las raices de polinomios de la forma \
+	AX**2 + BX + C tomando como entrada 3 numeros (a,b,c) enteros.
+	Para calcularlas se utiliza la formula general o  formula resolvente.
+	Dichas raices son  almacenadas en las variables x1 y x2.
+	
+	Autor: 
+		Br. Jose Barrera
+
+	Ultima modificacion: 18/01/2018
+
+	VARIABLES:
+	A: int // ENTRADA: Coeficiente del cuadratico.
+	B: int // ENTRADA: Coeficiente del lineal.
+	C: int // ENTRADA: Termino independiente.
+	x1: float // SALIDA: raiz del polinomio para el determinante positivo.
+	x2: float // SALIDA: raiz del polinomio para el determinante negativo.
+*/
+
+[
+const A : int;
+const B : int;
+const C : int;
+var x1 : float;
+var x2 : float;
+
+{A != 0 /\ 4 * A * C <= B * B}
+
+x1 := ((- B + ((B ** 2) - ((4 * A) * C)) ** 0.5) / (A * 2));
+x2 := ((- B - ((B ** 2) - ((4 * A) * C)) ** 0.5) / (A * 2));
+if (x1 == x2) ->
+	write(x1," es raiz doble, es decir");
+| not (x1 == x2) 
+	skip;
+fi;
+write("El valor absoluto de a es b")
+
+{ (A * x1 * x1 + B * x1 + C = 0 /\ A * x2 * x2 + B * x2 + C = 0) }
+
+]

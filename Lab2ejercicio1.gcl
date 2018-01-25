@@ -1,0 +1,13 @@
+[
+const​ anyo : int;
+var​ esBisiesto : boolean;
+{ anyo > 0 }
+esBisiesto = True;
+if ( anyo mod 4 != 0 ) -> esBisiesto = False;
+[] ( anyo mod 100 != 0 \/ anyo mod 400 == 0 ) -> 
+skip;
+[] ( anyo mod 4 == 0 /\ anyo mod 100 == 0 /\ anyo mod 400 != 0 ) ->
+esBisiesto = False;
+Fi
+]
+{​ ((anyo mod 4) != 0) \/ ((anyo mod 100) != 0) \/ (anyo mod 400 == 0 )) == (esBisiesto = true) }

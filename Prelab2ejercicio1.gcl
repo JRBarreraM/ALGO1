@@ -1,0 +1,32 @@
+/*  Prelab2ejercicio1.py
+
+	DESCRIPCION: Programa que dado un valor entero a cualquiera, calcula su valor absoluto.
+	El calculo consta en la aplicacion de la definicion de valor absoluto \
+	Dicho resultado es almacenado en b.
+	
+	Autor: 
+		Br. Jose Barrera
+
+	Ultima modificacion: 18/01/2018
+
+	VARIABLES:
+	a: int // ENTRADA: Numero al que se le desea calcular el valor absoluto.
+	b: int // SALIDA: Valor absoluto de a.
+*/
+[
+
+const a : int;
+var b : int;
+
+{true}
+
+if a >= 0 ->
+	b := a;
+| a < 0 ->
+	b := - a;
+fi;
+write("El valor absoluto de a es b")
+
+{ b = abs(a) }
+
+]

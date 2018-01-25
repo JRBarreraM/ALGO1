@@ -1,0 +1,15 @@
+[
+const​ A: int;
+const​ B: int;
+const​ C: int;
+var​ maximo: int;
+{ A != B != C }
+if ( A > B /\ A > C: ) ->
+maximo := A;
+[] ( B > A /\ B > C: ) ->
+maximo := B;
+[] ( C > A /\ C > B: ) ->
+maximo := C;
+fi
+{​ ((A > B /\ A > C) == (maximo == A) ) \/ ((B > A /\ B > C) == (maximo == B) ) \/ ((C > A /\ C > B) == (maximo == C) )}
+]
