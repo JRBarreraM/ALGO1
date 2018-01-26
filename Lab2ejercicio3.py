@@ -1,24 +1,24 @@
-"""	Prelab2ejercicio3.py
+"""	Lab02ejercicio4.py
 
 	DESCRIPCION: Programa que dados tres valores enteros A, B y C \
-	con valores diferentes, determinar el valor máximo ëntre ellos.
+	con valores diferentes, determina el valor maximo entre ellos.
 			
 	Autor: 
 		Br. Jose Barrera
 
-	Ultima modificacion: 23/01/2018
+	Ultima modificacion: 25/01/2018
 
 	VARIABLES:
 	A: int // ENTRADA: 1er Numero a comparar.
 	B: int // ENTRADA: 2do Numero a comparar.
 	C: int // ENTRADA: 3er Numero a comparar.
-	maximo: int // SALIDA: Numero maximo. 
+	maximo: var // SALIDA: Numero maximo. 
 """
 
 # Valores iniciales:
-A = int(input("A = "))
-B = int(input("B = "))
-C = int(input("C = "))
+A = int(input("ingrese el primer numero = "))
+B = int(input("ingrese el segundo numero = "))
+C = int(input("ingrese el tercer numero = "))
 
 # Precondicion: 
 assert(A != B != C)
@@ -32,8 +32,8 @@ elif C > A and C > B:
 	maximo = C
 
 # Postcondicion: 
-assert( ((A > B and A > C) == (maximo == A) ) or ((B > A and B > C) == (maximo == B) ) \
-	or ((C > A and C > B) == (maximo == C) ) )
+assert( ( not (A > B and A > C) or (maximo == A) ) and ( not (B > A and B > C) or (maximo == B) ) \
+	and ( not(C > A and C > B) or (maximo == C) ) )
 
 # Salida:
-print(maximo)
+print("El maximo es ", maximo)
