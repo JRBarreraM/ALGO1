@@ -1,10 +1,10 @@
 /* Prelab2ejercicio2.py
 
 	DESCRIPCION: Programa que calcula las raices de polinomios de la forma \
-	AX**2 + BX + C tomando como entrada 3 numeros (a,b,c) enteros.
+	AX**2 + BX + C tomando como entrada 3 numeros (A,B,C) enteros.
 	Para calcularlas se utiliza la formula general o  formula resolvente.
-	Dichas raices son  almacenadas en las variables x1 y x2.
-	
+	Dichas raices son almacenadas en las variables x1 y x2.
+		
 	Autor: 
 		Br. Jose Barrera
 
