@@ -13,7 +13,7 @@
 #
 
 # VARIABLES:
-#	R: int   // ENTRADA: Valor del Radio.
+#	R: float  // ENTRADA: Valor del Radio.
 #	A: float // SALIDA: Resultado de la formula
 
 # Valores iniciales:
@@ -29,4 +29,4 @@ A = (R*R)*3.1416
 assert(A == (R*R)*3.1416)
 
 # Salida:
-print("El Area es ", A)
+print("El Area es",A)

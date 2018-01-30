@@ -12,7 +12,7 @@
 #
 
 # VARIABLES:
-#	a: int   // ENTRADA: Valor mayor.
+#	a: int // ENTRADA: Valor mayor.
 #	b: int // ENTRADA: Valor medio.
 #   c: int // ENTRADA: Valor menor.
 
@@ -23,7 +23,7 @@ b = int(input("b:"))
 c = int(input("c:"))
 
 # Precondicion: 
-assert(a >= b >= c)
+assert((a>=b)>=c)
 
 # Calculos:
 (a,c) = (c,a)
@@ -32,4 +32,4 @@ assert(a >= b >= c)
 assert(c >= b >= a)
 
 # Salida:
-print("El nuevo orden es ", a, b, c)
+print("El nuevo orden es",a,b,c)
