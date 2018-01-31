@@ -1,45 +1,55 @@
 """	Lab03ejercicio2.py
-
-	DESCRIPCION:Dado un entero positivo n escriba un programa que diga si\
-	el entero es primo. Un número n es primo si sólo es divisible por 1 y n.\
+	DESCRIPCION:Dado un entero positivo n dice si el entero es primo.\
+	Un número n es primo si sólo es divisible por 1 y n.\
 	Además, el programa imprime los divisores de n (distintos de 1 y n)\
 	a medida que consigue un divisor. Finalmente, se imprime si n es primo o no.
-
 	Autor: 
 		Br. Jose Barrera
 	Ultima modificacion: 30/01/2018
 	VARIABLES:
-	o: str // ENTRADA: Almacena la decision s/n.
+	n: int // ENTRADA: Almacena el valor del numero dado.
+	r: str // SALIDA: Dice si n es primo o no.
+	cota: int // Valor de la cota decreciente que permitirá que el ciclo termine.
+	k: int // Valor que permite recorrer los enteros entre 2 y n-1.
+	j: int // Valor que permite contar el numero de factores.
 """
 # Valores iniciales:
 n=int(input("Introduzca el numero: "))
 
 # Precondicion: 
-assert(n >= 2)
+assert(n>0)
 
-# Inicializaciones del ciclo
-k=1
-cota=n-k
-
-# Verificacion de invariante y cota al inicio
-
-#assert( True )
-assert( cota >= 0)
-
-while ( n >= k ):
-	if (n % k == 0):
-		print(k) 
-		k=k+1
-	else:
-		k=k+1
-   
-	# Verificacion de invariante y cota en cada iteracion
-	#assert( True )
-	assert( cota > n-k )
-	cota = n-k
-   
+r="es primo"
+j=0
+if n>2:
+	# Inicializaciones del ciclo
+	k=2
+	cota=n-k
+	
+	# Verificacion de invariante y cota al inicio
+	assert(n>=k)
+	assert(cota>=0)
+	while (n>k):
+		if ((n%k)==0):
+			print(k)
+			j+=1
+			k+=1
+			r="no es primo"
+		else:
+			k+=1
+		# Verificacion de invariante y cota en cada iteracion
+		assert(n>=k)
+		assert(cota>n-k)
+		cota=n-k
+elif n==1:
+	r="no es primo"
 # Postcondicion: 
-#assert(  )
- 
+assert( r=="no es primo" or j==0  )
+
 # Salida:
-#if 
+if j==1:
+	print(r, "pues tiene",j,"factor no trivial")
+elif n==1:
+	print(r)
+else:
+	print(r, "pues tiene",j,"factores no triviales")

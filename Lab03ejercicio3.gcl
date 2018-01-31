@@ -1,0 +1,23 @@
+[
+const​ n: int;
+var​ k: int;
+var​ j: int;
+var​ prefecto: bool;
+
+{ n > 0 }
+
+k:=1;
+j:=0;
+
+{inv n>=k}
+{bound cota>=0}
+
+do ( (n mod k)=0 ) ->
+j := j+k;
+k := k+1;
+[] ( (n mod k)!=0 ) ->
+k := k+1;
+od
+;perfecto:=(n=j)
+{​ (n=k \/ perfecto=False) /\ (n!=k \/ perfecto=True) }
+]
