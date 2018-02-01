@@ -11,18 +11,18 @@ j:=0;
 k:=2;
 
 {inv n>=k}
-{bound cota:=n-k}
+{bound n-k}
 
 if ( n>2 ) ->
 	do (n>k) ->
 		if ((n mod k)=0) ->
-		j+=1
-		k+=1
-		r="no es primo"
+			j+=1
+			k+=1
+			r="no es primo"
 		[] ((n mod k)!=0) ->
-		k+=1
+			k+=1
 		fi
-	[] ( n=1 ) ->
+[] ( n=1 ) ->
 	r:="no es primo";
 fi
 {​ (r="no es primo" \/ j=0) }

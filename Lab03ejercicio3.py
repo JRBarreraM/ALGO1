@@ -7,7 +7,7 @@
 	a medida que consigue un divisor. Finalmente, se imprime si n es primo o no.
 	Autor: 
 		Br. Jose Barrera
-	Ultima modificacion: 30/01/2018
+	Ultima modificacion: 31/01/2018
 	VARIABLES:
 	n: int // ENTRADA: Almacena el valor de entrada.
 	r: str // SALIDA: Dice si n es primo o no.
@@ -41,7 +41,7 @@ while (n>k):
 	cota=n-k
 perfecto=(n==j)
 # Postcondicion: 
-assert( (n==k or perfecto==False) and (n!=k or perfecto==True) )
+assert((n==k or (perfecto==False) and (n!=k or (perfecto==True))))
 
 # Salida:
 if perfecto==False:

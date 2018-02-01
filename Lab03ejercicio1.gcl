@@ -1,45 +1,43 @@
 [
-const​ o: str;
 const​ p: int;
 const​ l: float;
 const​ a: float;
 const​ r: float;
-const​ n: float;
+const​ n: int;
 var​ s: float;
 var ar: float;
 var​ su: int;
 var​ i: int;
 
-{ o="n" \/ o="s" }
-{inv n>=k}
-{bound cota:=n-k}
+{ l>0 /\ a>0  /\ r>0 /\ n>0 /\ 1<=p<=3 }
 
-s,l,a,ar,su,r:=False,False,False,False,False,False
+i:=0;
 
-if ( o="n" ) ->
-skip
-[] ( o="n" ) ->
-	do	( 0<=i<=2 ) ->
-		if (p = 1) ->
-			{((l > 0) /\ (a > 0))}
-			s:=l*a
-			{s=l*a}
-			s=round(s,4)
-			i:=i+1
-		[] (p = 2) ->
-			{r>0}
-			ar:=(3.1416*(r^2))
-			{ar=(3.1416*(r^2))}
-			ar=round(ar,4)
-			i:=i+1
-		[] (p = 3) ->
-			{n>0}
-			su:=(​ Σ ​ i ​ : 1​ ≤​ i ​ ≤​ n :​ i^2​ ​ )
-			{su=(​ Σ ​ i ​ : 1​ ≤​ i ​ ≤​ n :​ i^2​ ​ )}
-			i:=i+1
-		fi
-	od
-fi
+{inv 0<=i<=3}
+{bound 3-i}
 
-{​ ( o!="s" \/ s=l*a \/ su=(​ Σ ​ i ​ : 1​ ≤​ i ​ ≤​ n :​ i^2​ ​ ) \/ ar=(3.1416*(r**2)))) }
+s,ar,su:=0,0,0;
+
+do	( 0<=i<=2 ) ->
+	if (p = 1) ->
+		{((l > 0) /\ (a > 0))}
+		s:=l*a
+		{s=l*a}
+		s=round(s,4)
+		i:=i+1
+	[] (p = 2) ->
+		{r>0}
+		ar:=(3.1416*(r^2))
+		{ar=(3.1416*(r^2))}
+		ar=round(ar,4)
+		i:=i+1
+	[] (p = 3) ->
+		{n>0}
+		su:=(​ Σ ​ i ​ : 1​ ≤​ i ​ ≤​ n :​ i^2​ ​ )
+		{su=(​ Σ ​ i ​ : 1​ ≤​ i ​ ≤​ n :​ i^2​ ​ )}
+		i:=i+1
+	fi
+od
+
+{​ ( o!="s" \/ s=l*a \/ su=(​ Σ ​ i ​ : 1​ ≤​ i ​ ≤​ n :​ i^2​ ​) \/ ar=(3.1416*(r^2))) }
 ]

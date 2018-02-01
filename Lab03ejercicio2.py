@@ -5,7 +5,7 @@
 	a medida que consigue un divisor. Finalmente, se imprime si n es primo o no.
 	Autor: 
 		Br. Jose Barrera
-	Ultima modificacion: 30/01/2018
+	Ultima modificacion: 31/01/2018
 	VARIABLES:
 	n: int // ENTRADA: Almacena el valor del numero dado.
 	r: str // SALIDA: Dice si n es primo o no.
