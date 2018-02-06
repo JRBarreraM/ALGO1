@@ -1,0 +1,21 @@
+[
+const​ A: array[0..N)[0..N) of int;
+const N: int;
+var suma: int;
+var​ i: int;
+var​ : int;
+
+{ N>0 }
+
+suma:=0
+i:=0
+
+{inv N=len(A)}
+{bound N-i}
+
+do i < N ->
+	i:=i+1;
+	suma:=suma+A[i];
+od
+
+{suma=(​Σ​ i : 0​ ≤​ i ≤​ N :​ A[i])}

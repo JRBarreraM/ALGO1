@@ -10,7 +10,7 @@
 #
 
 # VARIABLES:
-#	b: int // ENTRADA: Valor medio.
+#	b: int // ENTRADA: Valor a verificar paridad.
 
 # Valores iniciales:
 b = int(input("b:"))
@@ -22,4 +22,4 @@ assert(True)
 assert(True)
 
 # Salida:
-print("Es", b % 2 == 0 , "que es par")
+print("Es",b % 2 == 0,"que es par")

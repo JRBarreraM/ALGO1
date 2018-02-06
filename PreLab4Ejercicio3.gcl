@@ -1,0 +1,31 @@
+[
+const​ M: array[0..3)[0..3) of int;
+var i: int;
+var j: int;
+var​ det: int;
+var​ diagonal: int;
+
+{ True }
+
+diagonal:=0
+{inv 0<=diagonal<=1}
+{bound 4-i}#ciclo externo i
+{bound 4-j}#ciclo interno j
+i:=0
+do i < 3 ->
+	i:=i+1;
+	j:=0;
+	do j < 3 ->
+		if ((i!=j) /\ (M[i][j]!=0)) ->
+			diagonal:=1;
+			j:=j+1
+		[] ((i!=j) /\ (M[i][j]=0)) ->
+			j:=j+1
+		fi
+	od
+od
+
+;det=:(M[0][0]*(M[1][1]*M[2][2])+(M[0][1]*M[1][2]*M[2][0])+(M[1][0]*M[2][1]*M[0][2])
+	-(M[0][2]*M[1][1]*M[2][0])-(M[0][1]*M[1][0]*M[2][2])-(M[1][2]*M[2][1]*M[0][0]))
+
+{(diagonal=1) \/ (det=((M[0][0]*M[2][2]*M[1][1])))}
