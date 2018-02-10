@@ -17,7 +17,10 @@
 	grupo: array // Almacena la informacion de todos los estudiantes.
 	nombre: str // ENTRADA: Atributo nombre del estudiante.
 	edad: int // ENTRADA: Atributo edad del estudiante.
-	indice: int // ENTRADA: Atributo indice del estudiante.
+	indice: float // ENTRADA: Atributo indice del estudiante.
+	ntp0,ntp1,ntp2,ntp3: float // Atributo nota parcial 1,2,3,4 del estudiante.
+	p: int // Para calcular los promedios.
+	ip,ep,p0p,p1p,p2p,p3p: float // SALIDA: promedios del grupo.
 
 	x: int // Permite operar entre 0 y N, para anexar al grupo\
 				a los estudiantes.
@@ -30,17 +33,17 @@ class estudiante:
 	nombre="Jose"
 	edad=19
 	indice=4.0
-	ntp1=12.5
-	ntp2=22.5
-	nt3=25.0
-	nt4=25.0
+	ntp0=12.5
+	ntp1=22.5
+	ntp2=25.0
+	ntp3=25.0
 
 grupo=[estudiante() for x in range(N)]
 i=0
 #Cota=N-1-i
 #Invariante
 assert((len(grupo[i].nombre)>=1) and (grupo[i].edad>0) and (0<grupo[i].indice<6) \
-	 and 0<=grupo[i].ntp1<=25 and 0<=grupo[i].ntp2<=25 and 0<=grupo[i].ntp3<=25 and 0<=grupo[i].ntp4<=25)6))
+	and 0<=grupo[i].ntp0<=25 and 0<=grupo[i].ntp1<=25 and 0<=grupo[i].ntp2<=25 and 0<=grupo[i].ntp3<=25)
 
 #Operaciones del lazo
 for i in range(N):
@@ -54,7 +57,7 @@ for i in range(N):
 
 	#Invariante
 	assert((len(grupo[i].nombre)>=1) and (grupo[i].edad>0) and (0<grupo[i].indice<6) \
-		 and 0<=grupo[i].ntp1<=25 and 0<=grupo[i].ntp2<=25 and 0<=grupo[i].ntp3<=25 and 0<=grupo[i].ntp4<=25)
+		and 0<=grupo[i].ntp0<=25 and 0<=grupo[i].ntp1<=25 and 0<=grupo[i].ntp2<=25 and 0<=grupo[i].ntp3<=25)
 
 #Calculo Promedio Edad
 p=0
@@ -95,14 +98,22 @@ p3p=(p/N)
 #Calculo definitiva
 definitiva=0
 for i in range(N):
-	for j in range(4):
-		definitiva+=grupo[i].ntp[j]
+	definitiva=(grupo[i].ntp0+grupo[i].ntp1+grupo[i].ntp2+grupo[i].ntp3)
+	print("nota definitiva de",grupo[i].nombre,"es ",end=(""))
 	if definitiva>=85:
-		print("nota definitiva ",definitiva) 
+		print("5")
+	elif 70<=definitiva<85:
+		print("4")
+	elif 50<=definitiva<70:
+		print("3")
+	elif 30<=definitiva<50:
+		print("2")
+	elif definitiva<30:
+		print("1")
 
 # Postcondicion:
-assert((ep>0) and (0<ip<6) and 0<=definitiva<6 (p1p>=0) and (p2p>=0) and (p3p>=0) and (p0p>=0))
+assert((ep>0) and (0<ip<6) and (0<=definitiva<=100) and (p1p>=0) and (p2p>=0) and (p3p>=0) and (p0p>=0))
 
 # Salida:
 print("Los promedios de edad e indice del grupo son:",ep,"y",ip)
-print("Mientras que os promedios de cada parcial son:",p1p,p2p,p3p,p4p)
+print("Mientras que os promedios de cada parcial son:",p0p,p1p,p2p,p3p)

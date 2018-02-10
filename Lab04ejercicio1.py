@@ -7,7 +7,7 @@
 		
 	Autor: 
 		Br. Jose Barrera
-	Ultima modificacion: 06/01/2018
+	Ultima modificacion: 09/02/2018
 	VARIABLES:
 	M: int // ENTRADA: Valor superior al grado del polinomio P.
 	P: array // Almacena los coeficientes del polinomio.
@@ -18,24 +18,24 @@
 M=int(input("El grado del polinomio es <= que: "))
 
 # Precondicion: 
-assert( M > 0 )
-
+assert(M>0)
 
 P=[int(input("P[" + str(i) + "]= ")) for i in range(M+1)]
-print("P(x)=",end=(""))
+print("P(x)= ",end=(""))
 
 # Cota M-i
 # Invariante
-assert (​True)
+# assert(True)
 for i in range(M+1):
 	# operaciones del lazo
-	if i<M:
-		if 0<P[i]:
+	if 0==P[i]:
+		pass
+	elif i<M and (0<P[i] or 0>P[i]):
 			print(P[i],"x^",M-i,"+",end=(""))
 	elif i==M:
 		print(P[i])
 	# Invariante
-	assert (​True)
+	# assert(​True)
 
 # Postcondicion: 
 assert(True)

@@ -1,0 +1,33 @@
+# Lab04Ejercicio2.gcl
+#
+# DESCRIPCION: Dada una matriz NxM el algoritmo calcula la suma de todos sus elementos
+#
+# Autor: 
+#	Jose Barrera
+#
+# Ultima modificacion: 09/02/2018
+
+[
+  CONST 
+    M: int;
+    N: int;
+  VAR
+    P: array[0..M)[0..N) of int;
+    i: int;
+    j: int;
+  suma: int;
+	 
+  {M>0 /\ N>0}
+
+  suma,i,j := 0,0,0;
+	  
+  {inv: True}
+  {cota N-i}
+do i<N ->
+  do j<M ->
+    suma:=suma + P[i][j]
+    j:j+1
+  i:=i+1
+   
+  {suma=(%sigma i: 0<=i<N: (%sigma j: 0<=j<M: P[i][j]))}
+]
