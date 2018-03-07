@@ -1,0 +1,112 @@
+[
+const​ M: array[0..3)[0..3) of int;
+var i: int;
+var j: int;
+var​ det: int;
+var​ diagonal: int;
+
+{ True }
+
+diagonal:=0
+{inv 0<=diagonal<=1}
+{bound 4-i}#ciclo externo i
+{bound 4-j}#ciclo interno j
+i:=0
+do i < 3 ->
+	i:=i+1;
+	j:=0;
+	do j < 3 ->
+		if ((i!=j) /\ (M[i][j]!=0)) ->
+			diagonal:=1;
+			j:=j+1
+		[] ((i!=j) /\ (M[i][j]=0)) ->
+			j:=j+1
+		fi
+	od
+od
+
+;det=:(M[0][0]*(M[1][1]*M[2][2])+(M[0][1]*M[1][2]*M[2][0])+(M[1][0]*M[2][1]*M[0][2])
+	-(M[0][2]*M[1][1]*M[2][0])-(M[0][1]*M[1][0]*M[2][2])-(M[1][2]*M[2][1]*M[0][0]))
+
+{(diagonal=1) \/ (det=((M[0][0]*M[2][2]*M[1][1])))}
+
+def leer(N: int) -> (array):
+# PRECONDICION: N>1
+# var S: array // variable auxiliar
+# var i: int // variable auxiliar
+    print("A continuacion introduzca los elementos de la secuencia")
+    S=[int(input("S["+str(i)+"]=")) for i in range(N)]
+    return S
+# POSTCONDICION: True
+#Fin leer
+###############################################################################
+
+# Descripcion: Funcion que compara los elementos de un arreglo S \
+#				y dice si esta ordenada (creciente o decreciente) o desordenada.
+# Parametros:
+def orden(S: array) -> (bool,bool,bool):
+# PRECONDICION: len(S)>1
+
+# var i: int // conteo de iteraciones el ciclo
+# var creciente: bool // variable auxiliar
+# var decreciente: bool // variable auxiliar
+# var desordenado: bool // variable auxiliar
+    i=0
+    L=len(S)
+    creciente=False
+    decreciente=False
+    desordenado=False
+    while i<L-1 and desordenado==False:
+        if S[i]<=S[i+1]:
+            creciente=True
+            if decreciente==True and creciente==True:
+            	desordenado=True
+        elif S[i]>S[i+1]:
+            decreciente=True
+            if decreciente==True and creciente==True:
+            	desordenado=True
+        i=i+1
+        print(creciente, decreciente, desordenado)
+    return (creciente,decreciente,desordenado)
+# POSTCONDICION: (% forall i: int | 0 <= i /\ i < N-1 | S[i]>S[i+1] \/ creciente=True) \/
+#				(% forall i: int | 0 <= i /\ i < N-1 | S[i]<=S[i+1] \/ decreciente=True) \/
+#						((desordenado!=creciente) \/ (desordenado=True))
+#Fin orden
+###############################################################################
+
+# Descripcion: Funcion que toma 3 argumentos booleanos \
+#				y retorna un entero distinto en cada caso.
+# Parametros:
+def mostrar(B: array) -> int:
+# PRECONDICION: True
+	if B[2]==True:
+		o=0
+	elif B[1]==True:
+		o=-1
+	elif B[0]==True:
+		o=1
+	return o
+# POSTCONDICION: (B[2]=True /\ o=0) \/ (B[1]=True /\ o=-1) \/ (B[0]=True /\ o=1)
+#Fin mostrar
+###############################################################################
+
+##################################
+# Inicio del programa 
+##################################
+print("Ingrese una secuencia, se le dira si esta es creciente,decreciente o desordenada")
+print("a traves de un numero entero:(-1: decreciente; 1:creciente y 0:en desorden)") 
+# Valores iniciales:
+N=int(input("Coloque la cantidad de elementos de la secuencia:"))
+
+try:
+    assert(N>1)
+except:
+    print("El tamaño de la secuencia debe ser mayor a 1")    
+    print("el programa terminara")
+    sys.exit()
+
+print(mostrar(orden(leer(N))))
+
+# Aquí no se verifica la post. Ya se verifico en el subprograma.
+# Es muy sencillo el codigo del programa principal seria redundante
+# FIN DEL PROGRAMA PRINCIPAL
