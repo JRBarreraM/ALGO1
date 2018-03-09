@@ -54,7 +54,6 @@ def orden(S: array) -> (bool,bool,bool):
             if decreciente==True and creciente==True:
             	desordenado=True
         i=i+1
-        print(creciente, decreciente, desordenado)
     return (creciente,decreciente,desordenado)
 # POSTCONDICION: (% forall i: int | 0 <= i /\ i < N-1 | S[i]>S[i+1] \/ creciente=True) \/
 #				(% forall i: int | 0 <= i /\ i < N-1 | S[i]<=S[i+1] \/ decreciente=True) \/
