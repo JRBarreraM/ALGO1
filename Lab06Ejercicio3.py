@@ -5,12 +5,12 @@
 	Para ello utiliza subprogramas, el primero para leer \
 	los número de la entrada y almacenarlos en un arreglo S, otro \
 	para verfificar si un numero es primo, un tercero para anexar a S \
-	los factores primos de M con sus exponentes, y por ultimo uno que
+	los factores primos de M con sus exponentes, y por ultimo uno que \
 	imprima la informacion de manera organizada en pantalla.
 	
 	Autor: 
 		Br. Jose Barrera
-	Ultima modificacion: 07/03/2018
+	Ultima modificacion: 09/03/2018
 """
 
 import sys    # Se importa la libreria sys para poder utilizar sys.exit()
@@ -25,7 +25,9 @@ def leer(M: int, N: int) -> (array):
 # PRECONDICION: True
 # var S: array // variable auxiliar
 # var i: int // variable auxiliar
-    S=(M,N)
+    S=[0]*(M+2)
+    S[0]=M
+    S[1]=N
     return S
 # POSTCONDICION: True
 #Fin leer
@@ -37,13 +39,10 @@ def leer(M: int, N: int) -> (array):
 def primo(i: int) -> bool:
 # PRECONDICION: i>0
 # var j: int // variable auxiliar
-	j=1
-	primo=True
-	while j<i:
+	for j in range(2,i):
 		if i%j==0:
-			primo=False
-		j+=1
-	return primo
+			return False
+	return True
 # POSTCONDICION: True
 #Fin leer
 ###############################################################################
@@ -54,24 +53,23 @@ def primo(i: int) -> bool:
 def aprimo(S: array) -> (array):
 # PRECONDICION: True
 # var S: array // variable auxiliar
-# var i: int // variable auxiliar
-# var E: int // variable auxiliar
+# var i: int // base factor primo
+# var E: int // exponente factor primo
 # var a: int // variable auxiliar
 # var b: int // variable auxiliar
-	i,a,b=2,2,3
-	while i<S[1]:
+	a,b=2,3
+	for i in range(2,S[0]):
 		if primo(i):
 			E=0
 			M=S[0]
 			while M%i==0:
 				M=M//i
 				E+=1
-			S[a]=i
-			S[b]=E
-			a+=1
-			b+=1
-		i+=1
-	print(S)
+			if E!=0:
+				S[a]=i
+				S[b]=E
+				a+=2
+				b+=2
 	return S
 # POSTCONDICION: True
 #Fin leer
@@ -82,10 +80,14 @@ def aprimo(S: array) -> (array):
 # Parametros:
 def mostrar(S: array) -> array:
 # PRECONDICION: True
-# var i: int // variable auxiliar
-	N=len(S)//2
-	for i in range(1,N):
-		print(S[2*i],"a la",S[2*i+1])
+# var i: int // recorre el arreglo
+# var N: int // tamaño del arreglo
+	if S[2]==0:
+		print("El numero es primo, sus factores son triviales:",1,"y",S[0])
+	else: 
+		for i in range(1,(M+2)//2):
+			if 0<S[2*i]<S[1]:
+				print(S[2*i],"a la",S[2*i+1])
 	return S
 # POSTCONDICION: True
 #Fin mostrar
@@ -100,12 +102,15 @@ M=int(input("Ingrese el natural al cual se le calcularan sus factores primos:"))
 N=int(input("Ingrese el natural mayor que los factores primos del otro:"))
 
 try:
-    assert(M>1 and N>2)
+    assert(M>1 and N>2 and M>=N)
 except:
-    print("Ambos numeros deben ser mayores a 0")    
+    print("El numero a factorizar debe ser mayor a 1")
+    print("La cota debe ser mayor que 2")
+    print("El numero a factorizar debe ser mayor o igual que la cota")    
     print("el programa terminara")
     sys.exit()
 print("Los Naturales que cumplen la condicion son:")
+
 mostrar(aprimo(leer(M,N)))
 
 # Aquí no se verifica la post. Ya se verifico en el subprograma.
