@@ -1,0 +1,44 @@
+[
+const​ S: array[0..N) of int;
+
+{ N > 1 }
+
+fiba(S)
+
+func fib(S: int) -> f : int:
+{ Pre: S >= 0 }
+{ Post : fib(S)=((fib(S-2)+fib(S-1) /\ S>1) \/ (fib(S)=1 /\ (S=0 \/ S=1)))}
+[
+	var f: int;
+	var k: int;
+	var a: int;
+	var b: int;
+
+	k,f,a,b := 0,1,1,1
+	do k<=S →
+		if k==0 \/ k==1 →
+			k := k+1
+		[] k!=0 /\ k!=1 →
+			f := a+b
+			a := b
+			b := f
+			k := k+1
+	>> f
+]
+
+func fiba( S: array [0..N) of int ) → B array [0..N) of int
+{ Pre: N >= 0 }
+{ Post: True }
+[
+    var S : array [0..N) of int;
+    var B : array [0..N) of int;
+    var i : int;
+	i := 0
+	do i<N →
+		B[i] := fib(S[i])
+		i+=1
+	od
+    >> B
+]
+
+{True}

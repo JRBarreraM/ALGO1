@@ -1,0 +1,59 @@
+[
+const​ M: int;
+const​ N: int;
+
+
+{ M > 1 /\ N>2 /\ M>=N }
+
+aprimo(leer(M,N))
+
+func leer( M : int, N : int ) -> array:
+{Pre: True }
+{Post: True }
+[
+    var S: array [0..M+2] of 0
+    S[0] := M;
+    S[1] := N;
+    >> S
+]
+
+
+func primo(i: int) -> bool:
+{Pre: i>1 }
+{Post: (% forall i: int | 1 < i /\ i < M | M mod i != 0)}
+    var j: int
+    var primo: bool
+    primo := True
+	do  j < i ->
+		if i mod j == 0 ->
+			primo := False
+		[] i mod j != 0 ->
+			skip
+		fi
+	od
+	>> primo
+]
+
+func aprimo( S: array [0..N]) -> array:
+{Pre: N>1}
+	var i: int
+	var E: int
+	var a: int
+	var b: int
+	i,a,b := 2,2,3
+	do i < S[0] ->
+		if primo(i) ->
+			E:=0
+			M:=S[0]
+			do M mod i==0 ->
+				M := M//i
+				E := E+1
+			if E!=0:
+				S[a]=i
+				S[b]=E
+				a:=a+2
+				b:=b+2
+	>> S
+]
+
+{True}
