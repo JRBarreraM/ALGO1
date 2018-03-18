@@ -21,7 +21,10 @@ with open("input.txt") as f:
 	for line in f:
 		print(line, end="")
 	print("\n")
-	A=[line.split() for line in f]
+f.closed
+
+with open("input.txt") as f:
+		A=[line.split() for line in f]
 f.closed
 
 with open("output.txt", "r+") as f:
@@ -30,6 +33,9 @@ with open("output.txt", "r+") as f:
 			f.write(A[i][1]*int(A[i][0])+"\n")		
 		else:
 			f.write("Linea erronea\n")
+f.closed
+
+with open("output.txt", "r+") as f:
 	for line in f:
 		print(line, end="")
 f.closed
