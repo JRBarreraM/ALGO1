@@ -1,0 +1,51 @@
+# PreLab8Ejercicio2.gcl
+# DESCRIPCION: Programa, que calcula la sumatoria desde 0 hasta \
+# un N dado por el usuario, de 2 a la N. 
+
+# Autor: 
+#   Br. Jose Barrera
+# Ultima modificacion: 18/03/2018
+
+[
+   CONST 
+     exp: int;
+     base: int;
+   VAR
+	   sumatoria: int;
+	 
+   { exp >= 0 base = 2 }
+
+   sumatoria := suma(2,exp);
+	 
+   { ( %sum i : 0 <= i <= exp : 2^i ) = sumatoria }
+]
+
+proc potencia(in base : int, in-out exp : int, out R : int)
+    { PRE: exp >= 0 /\ base >= 0 }
+    { POST: potencia(base,exp)=base^exp }
+   [ VAR:
+      R : int;
+
+      if exp=0 ->
+        R:=1
+      [] exp!=0 ->
+        exp:=exp-1;
+        R:=base*potencia(base,exp)
+      fi
+    ]
+
+proc suma(in base : int, in-out exp : int, out R : int)
+    { PRE: exp>=0 /\ base >=0 }
+    { POST: (%sum i : 0<=i<=exp : base^i ) = suma(base,exp) }
+   [ VAR:
+      R : int;
+      P : int;
+
+      if exp==0 ->
+        R:=1
+      [] exp!=0 ->
+        P:=potencia(base,exp);
+        exp:=exp-1;
+        R:=P+suma(base,exp)
+      fi
+    ]

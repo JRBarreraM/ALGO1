@@ -6,7 +6,7 @@
 		Br. Jose Barrera
 	Ultima modificacion: 18/03/2018
 		VARIABLES:
-	A: int // Lista de tuplas donde el primer elemento es el factor del segundo.
+	A: list // Lista de tuplas donde el primer elemento es el factor del segundo.
 """
 
 # Descripcion: Funcion verifica si todos los elementos de un str son bases del ADN.
