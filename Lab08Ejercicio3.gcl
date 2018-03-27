@@ -1,0 +1,22 @@
+proc numNoNulasRec(​in N: int; ​in matriz: ​array​[0..N)x[0..N) ​of int; ​in fila: int; ​out​ num: int)
+{ ​Pre:​ N>0 ∧ 0≤fila<N ∧ (∀i,j: 0≤i,j<N : 0≤matriz[i][j]≤1) }
+{ ​Post:​ num = (#i,j: 0≤i,j<N: matriz[i][j]≠0) }
+{ ​Cota:​ fila }
+[if  fila = 0 ->nroNoNulosFila(0,N,matriz,N,num)
+ [] fila ≠ 0 ->nroNoNulosFila(fila,N,matriz,N,num) numNoNulasRec(N,matriz,fila-1,num)
+ fi ]
+ proc nroNoNulosFila(​in k: int; ​in N: int; ​in matriz: ​array​[0..N)x[0..N) of​ int; ​in ​tam: int; ​out​ nonulos: int)
+ { ​Pre:​ 0≤k<N  ∧ 0≤tam≤N ∧ (∀i,j: 0≤i,j<N : 0≤matriz[i][j]≤1) }
+ { ​Post:​ nonulos = (#j: 0≤j<tam : matriz[k][j]≠0) }
+ { ​Cota:​ tam }
+ [if tam = 0 -> nonulos := 0
+  [] tam ≠ 0 ->  if matriz[k][tam-1]≠ 0->    nroNoNulosFila(N,matriz,tam-1,nonulos)
+  nonulos :=nonulos+1 
+  [] matriz[k][tam-1]= 0->    nroNoNulosFila(0,N,matriz,tam-1,nonulos)
+  fi
+  fi ]
+
+proc numNoNulas(​in N: int; ​in matriz: ​array​[0..N)x[0..N) ​of int; ​out num: int)
+{ ​Pre:​ N>0 ∧ (∀i,j: 0≤i,j<N : 0≤matriz[i][j]≤1) }
+{ ​Post:​ num = (#i,j: 0≤i,j<N: matriz[i][j]≠0) }
+[    numNoNulasRec(N,matriz,N-1,num) ]
