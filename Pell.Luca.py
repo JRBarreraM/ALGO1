@@ -39,9 +39,11 @@ print("Q(0) = 2")
 print("Q(1) = 2")
 print("Q(n>1) = 2*Q(n-1)+Q(n-2)")
 print("Si se le introducen los valores Pell_Luca(n,1,1,0)")
-try:
-	n=int(input("Ingrese n para comprobarlo"))
-	assert(n>=0)
-except:
-	print("n debe ser un entero mayor que 0")
+while True:
+	try:
+		n=int(input("Ingrese n para comprobarlo "))
+		assert(0<=n<=998)
+		break
+	except:
+		print("n debe ser un entero mayor que 0 y menor que 999")
 print(Pell_Luca(n,1,1,0))
