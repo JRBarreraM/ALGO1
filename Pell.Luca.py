@@ -26,6 +26,12 @@ Q(5)=2*Q(4)+Q(13)=2*(12*Q(1)+5*Q(0))+(5Q(1)+2Q(0))=29*Q(1)+12*Q(0)		Pell.Luca(5,
 """
 # Autores: 
 #	Br. Jose Barrera y Br. Alfredo Cruz.	
+
+# Pell_Luca iterativo.
+
+
+
+# Pell_Luca recursivo de Cola.
 def Pell_Luca(n=int,i=int,p=int,s=int)->int:
 	if n==0:
 		return 2
