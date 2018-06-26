@@ -117,3 +117,4 @@ assert((ep>0) and (0<ip<6) and (0<=definitiva<=100) and (p1p>=0) and (p2p>=0) an
 # Salida:
 print("Los promedios de edad e indice del grupo son:",ep,"y",ip)
 print("Mientras que os promedios de cada parcial son:",p0p,p1p,p2p,p3p)
+print("El mitico Lab de Clases")
